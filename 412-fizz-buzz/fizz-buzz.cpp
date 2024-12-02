@@ -2,20 +2,22 @@ class Solution {
 public:
     vector<string> fizzBuzz(int n) {
         vector<string> answer;
-        for(int i = 1; i <= n; i++){
-            if(i % 3 == 0 && i % 5 == 0){
-                answer.push_back("FizzBuzz");
+        answer.reserve(n);
+
+        for (int i = 1; i <= n; i++) {
+            string result;
+            if (i % 3 == 0){
+                result += "Fizz";
             }
-            else if(i % 3 == 0){
-                answer.push_back("Fizz");
+            if (i % 5 == 0) {
+                result += "Buzz";
             }
-            else if(i % 5 == 0){
-                answer.push_back("Buzz");
+            if (result.empty()) {
+                result = to_string(i);
             }
-            else{
-                answer.push_back(to_string(i));
-            }
+            answer.push_back(result);
         }
+
         return answer;
     }
 };
