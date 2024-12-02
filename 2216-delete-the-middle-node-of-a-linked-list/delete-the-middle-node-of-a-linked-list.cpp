@@ -25,6 +25,7 @@ public:
         }
         if (prev != nullptr)
             prev->next = currOne->next;
+            delete currOne;
         return head;        
 
     }
