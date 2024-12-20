@@ -14,24 +14,23 @@ public:
         if(!head){
             return head;
         }
-        ListNode* dummy = new ListNode(0);
-        dummy->next = head;
+        ListNode* sorted = nullptr;
         ListNode* curr = head;
-        while (curr && curr->next) {
-            if (curr->next->val < curr->val) {
-                ListNode* toInsert = curr->next;
-                curr->next = toInsert->next;
-                ListNode* pre = dummy;
-                while (pre->next && pre->next->val < toInsert->val) {
-                    pre = pre->next;
-                }
-                toInsert->next = pre->next;
-                pre->next = toInsert;
+        while (curr) {
+            ListNode* next = curr->next;
+            if (!sorted || sorted->val >= curr->val) {
+                curr->next = sorted;
+                sorted = curr;
             } else {
-                curr = curr->next;
+                ListNode* temp = sorted;
+                while (temp->next && temp->next->val < curr->val) {
+                    temp = temp->next;
+                }
+                curr->next = temp->next;
+                temp->next = curr;
             }
+            curr = next;
         }
-
-        return dummy->next;
+        return sorted;
     }
 };
