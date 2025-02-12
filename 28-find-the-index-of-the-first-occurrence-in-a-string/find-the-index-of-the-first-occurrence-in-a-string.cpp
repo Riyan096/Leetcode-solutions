@@ -1,5 +1,11 @@
 class Solution {
 public:
+    vector<int> preprocess(const string pattern) {
+        vector<int> badChar(256, -1);
+        for (int i = 0; i < pattern.size(); i++) 
+            badChar[pattern[i]] = i;
+        return badChar;
+    }
     int strStr(string haystack, string needle) {
         int i = 0, j = 0;
 
