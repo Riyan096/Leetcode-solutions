@@ -21,5 +21,4 @@ public:
         nums.insert(nums.end(), zeros.begin(), zeros.end());
         return nums;
     }
-    
 };
